@@ -23,6 +23,7 @@ txl-ubuntu-18-10-node0 192.168.100.20 node节点
 --------------------------------------------------------------------------------
 
 ```
+
 #1.1 同步时区及时间
 sudo tzselect
 sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
@@ -65,4 +66,5 @@ deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
 sudo apt-get update
 # 如果有报错的话，执行下面命令
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6A030B21BA07F4FB
+
 ```
