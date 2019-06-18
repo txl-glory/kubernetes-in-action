@@ -1,4 +1,7 @@
-# <center>Kubernetes 安装</center>
+
+<html>
+    <center>Kubernetes 安装</center>
+</html>
 
 搭建Kubernetes集群环境有以下三种方式：
 
