@@ -30,7 +30,7 @@ txl-ubuntu-18-10-node0 | 192.168.100.20 | node节点
 ---
 1.基础配置(所有k8s节点)
 
-```
+```shell
 #1.1 同步时区及时间
 sudo tzselect
 sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
@@ -78,7 +78,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6A030B21BA07F4FB
 
 2.关闭交换空间(所有k8s节点)
 
-```
+```shell
 #2.1 关闭交换空间
 sudo swapoff -a
 /etc/fstab里面注释掉swap部分
@@ -87,7 +87,7 @@ sudo swapoff -a
 
 3.ssh免密(所有k8s节点)
 
-```
+```shell
 #3.1 生成私钥和公钥,一路回车即可
 tianxuanling@txl-ubuntu-18-10-master0:~$ ssh-keygen -t rsa
 Generating public/private rsa key pair.
@@ -147,7 +147,7 @@ tianxuanling@txl-ubuntu-18-10-node0
 
 4.安装docker(所有k8s节点)
 
-```
+```shell
 #4.1 更新apt源
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6A030B21BA07F4FB
 sudo apt-get update 
@@ -210,7 +210,7 @@ sudo systemctl restart docker.service
 目前最新的稳定发行版是1.13.3，我们本次就来安装这个版本
 
 
-```
+```shell
 #5.1 执行下列命令拉取相关的docker镜像
 sudo docker pull mirrorgooglecontainers/kube-apiserver-amd64:v1.13.3
 sudo docker pull mirrorgooglecontainers/kube-controller-manager-amd64:v1.13.3
@@ -265,7 +265,7 @@ sudo apt-get install kubeadm
 
 6.使用kubeadm初始化集群
 
-```
+```shell
 #6.1 使用下面命令初始化集群
 tianxuanling@txl-ubuntu-18-10-master0:~$ sudo kubeadm init --kubernetes-version=v1.13.3 --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.100.10
 [init] Using Kubernetes version: v1.13.3
@@ -357,7 +357,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 7.安装网络插件canal
 
-```
+```shell
 #7.1 使用下面命令安装canal
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/canal/rbac.yaml
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/canal/canal.yaml
@@ -366,7 +366,7 @@ kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/
 
 8.查验集群
 
-```
+```shell
 #8.1 查验组件状态
 tianxuanling@txl-ubuntu-18-10-master0:~$ kubectl get cs
 NAME                 STATUS    MESSAGE              ERROR
@@ -397,7 +397,7 @@ kube-scheduler-txl-ubuntu-18-10-master0            1/1     Running   0          
 ---
 9.txl-ubuntu-18-10-node0节点加入集群
 
-```
+```shell
 #9.1 在txl-ubuntu-18-10-node0节点执行下面命令
 tianxuanling@txl-ubuntu-18-10-node0:/etc/docker$ sudo kubeadm join 192.168.100.10:6443 --token pm5pz9.sqamdtcxvaxbrjar --discovery-token-ca-cert-hash sha256:cb0943a220e2f28803c894070ba7a60dafaaa973e5949803e3cd45d096963df5
 [preflight] Running pre-flight checks
@@ -433,7 +433,7 @@ kubeadm token create --print-join-command
 ---
 10.相关命令
 
-```
+```shell
 # 查看集群结点状态
 kubectl get nodes
 # 查看详细结点信息
