@@ -30,7 +30,7 @@ txl-ubuntu-18-10-node0 | 192.168.100.20 | node节点
 ---
 1.基础配置(所有k8s节点)
 
-```shell
+```Bash
 #1.1 同步时区及时间
 sudo tzselect
 sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
