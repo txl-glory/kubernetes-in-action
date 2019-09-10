@@ -86,7 +86,7 @@ Pod 是一组紧密关联的容器集合，它们共享 PID、IPC、Network 和 
 在 Kubernetes 中，所有对象都使用 manifest（yaml 或 json）来定义，比如一个简单的 nginx 服务可以定义为 nginx.yaml，它包含一个镜像为 nginx 的容器：
 
 
-```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
