@@ -1,5 +1,3 @@
-# kubernetes实践系列0--docker基础
-
 ## 0.docker介绍
 
 - Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。
