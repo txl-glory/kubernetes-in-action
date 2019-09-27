@@ -13,11 +13,11 @@
 - 从头编译或者扩展现有的 OpenShift 或 Cloud Foundry 平台来搭建自己的 PaaS 环境。
 
 ## 2.docker的优点
-1. 简化程序：Docker让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux机器上，便可以实现虚拟化。Docker改变了虚拟化的方式，使开发者可以直接将自己的成果放入Docker中进行管理。方便快捷已经是 Docker的最大优势，过去需要用数天乃至数周的	任务，在Docker容器的处理下，只需要数秒就能完成。
+- 简化程序：Docker让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux机器上，便可以实现虚拟化。Docker改变了虚拟化的方式，使开发者可以直接将自己的成果放入Docker中进行管理。方便快捷已经是 Docker的最大优势，过去需要用数天乃至数周的	任务，在Docker容器的处理下，只需要数秒就能完成。
 
-2. 避免选择恐惧症：如果你有选择恐惧症，还是资深患者。那么你可以使用 Docker 打包你的纠结！比如 Docker 镜像；Docker 镜像中包含了运行环境和配置，所以 Docker 可以简化部署多种应用实例工作。比如 Web 应用、后台应用、数据库应用、大数据应用比如 Hadoop 集群、消息队列等等都可以打包成一个镜像部署。
+- 避免选择恐惧症：如果你有选择恐惧症，还是资深患者。那么你可以使用 Docker 打包你的纠结！比如 Docker 镜像；Docker 镜像中包含了运行环境和配置，所以 Docker 可以简化部署多种应用实例工作。比如 Web 应用、后台应用、数据库应用、大数据应用比如 Hadoop 集群、消息队列等等都可以打包成一个镜像部署。
 
-3. 节省开支：一方面，云计算时代到来，使开发者不必为了追求效果而配置高额的硬件，Docker 改变了高性能必然高价格的思维定势。Docker 与云的结合，让云空间得到更充分的利用。不仅解决了硬件管理的问题，也改变了虚拟化的方式。
+- 节省开支：一方面，云计算时代到来，使开发者不必为了追求效果而配置高额的硬件，Docker 改变了高性能必然高价格的思维定势。Docker 与云的结合，让云空间得到更充分的利用。不仅解决了硬件管理的问题，也改变了虚拟化的方式。
 
 ## 3.docker安装
 
@@ -25,23 +25,23 @@
 - Docker要求Ubuntu系统的内核版本高于3.10，通过 uname -r 命令查看你当前的内核版本。
 
 ```shell
-## 3.1 使用脚本安装 docker
+## 使用脚本安装 docker
 wget -qO- https://get.docker.com/ | sh
 
-## 3.1.1 ubuntu安装docker
+## ubuntu安装docker
 sudo apt install docker-ce
 
-## 3.2 启动docker后台服务
+## 启动docker后台服务
 service docker start
 
-## 3.2.1 设置开机自启动并启动Docker-ce（安装成功后默认已设置并启动，可忽略）
+## 设置开机自启动并启动Docker-ce（安装成功后默认已设置并启动，可忽略）
 sudo systemctl enable docker
 sudo systemctl start docker
 
-## 3.3 测试运行hello-world
+## 测试运行hello-world
 docker run hello-world
 
-## 3.4 镜像加速(鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决，我使用的是网易的镜像地址：http://hub-mirror.c.163.com。)
+## 镜像加速(鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决，我使用的是网易的镜像地址：http://hub-mirror.c.163.com。)
 ## 新版的 Docker 使用 /etc/docker/daemon.json（Linux） 或者 %programdata%\docker\config\daemon.json（Windows） 来配置 Daemon。请在该配置文件中加入（没有该文件的话，请先建一个）：
 
 {
@@ -52,22 +52,22 @@ docker run hello-world
 ```
 
 ## 4.docker体验
-1. Docker 允许你在容器内运行应用程序， 使用 docker run 命令来在容器内运行一个应用程序。输出Hello world
+- Docker 允许你在容器内运行应用程序， 使用 docker run 命令来在容器内运行一个应用程序。输出Hello world
 
 ```shell
 ## Docker 以 ubuntu15.10 镜像创建一个新容器，然后在容器里执行 bin/echo "Hello world"，然后输出结果。
 docker run ubuntu:15.10 /bin/echo "Hello world"
 ```
 
-2. 各个参数解析：
-- docker: Docker 的二进制执行文件。
-- run:与前面的 docker 组合来运行一个容器。
-- ubuntu:15.10指定要运行的镜像，Docker首先从本地主机上查找镜像是否存在，如果不存在，Docker 就会从镜像仓库 Docker Hub 下载公共镜像。
-- /bin/echo "Hello world": 在启动的容器里执行的命令
+- 各个参数解析：
+  - docker: Docker 的二进制执行文件。
+  - run:与前面的 docker 组合来运行一个容器。
+  - ubuntu:15.10指定要运行的镜像，Docker首先从本地主机上查找镜像是否存在，如果不存在，Docker 就会从镜像仓库 Docker Hub 下载公共镜像。
+  - /bin/echo "Hello world": 在启动的容器里执行的命令
 
 ## 5.容器使用
 
-1. docker客户端
+- **docker客户端**
 ```shell
 ## docker客户端非常简单 ,我们可以直接输入 docker 命令来查看到 Docker 客户端的所有命令选项。
 
@@ -166,7 +166,7 @@ Options:
       --no-trunc        Do not truncate output
 ```
 
-2. 运行一个web应用
+- **运行一个web应用**
 
 ```shell
 ## 前面我们运行的容器并没有一些什么特别的用处。
@@ -198,7 +198,7 @@ tianxuanling@txl-ubuntu1904-init:~$ sudo docker run -d -P training/webapp python
 c3fe0c87e5f494c9a55105e7bac9d65ab9fbda041e9a8ffa2a1d7231d512eec0
 ```
 
-3. 查看 WEB 应用容器
+- **查看 WEB 应用容器**
 
 ```shell
 ## 使用 docker ps 来查看我们正在运行的容器：
@@ -229,7 +229,7 @@ http://192.168.153.8:32768
 http://192.168.153.8:5000
 ```
 
-4. 查看 WEB 应用程序日志
+- **查看 WEB 应用程序日志**
 
 ```shell
 ## docker logs [ID或者名字] 可以查看容器内部的标准输出。
@@ -241,7 +241,7 @@ tianxuanling@txl-ubuntu1904-init:~$ sudo docker logs -f caf0cd11c184
 ## 从上面，我们可以看到应用程序使用的是5000端口并且能够查看到应用程序的访问日志。
 ```
 
-5. 查看WEB应用程序容器的进程
+- **查看WEB应用程序容器的进程**
 
 ```shell
 ## 我们还可以使用 docker top 来查看容器内部运行的进程
@@ -250,7 +250,7 @@ UID                 PID                 PPID                C                   
 root                3996                3966                0                   03:23               ?                   00:00:00            python app.py
 ```
 
-6. 检查 WEB 应用程序
+- **检查 WEB 应用程序**
 
 ```shell
 ## 使用 docker inspect 来查看 Docker 的底层信息。它会返回一个 JSON 文件记录着 Docker 容器的配置和状态信息。
@@ -472,14 +472,14 @@ tianxuanling@txl-ubuntu1904-init:~$ sudo docker inspect caf0cd11c184
 
 ```
 
-7. 停止 WEB 应用容器
+- **停止 WEB 应用容器**
 
 ```shell
 tianxuanling@txl-ubuntu1904-init:~$ sudo docker stop caf0cd11c184
 caf0cd11c184
 ```
 
-8. 重启WEB应用容器
+- **重启WEB应用容器**
 
 ```shell
 ## 已经停止的容器，我们可以使用命令 docker start 来启动。
@@ -492,7 +492,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 caf0cd11c184        training/webapp     "python app.py"     13 minutes ago      Up 42 seconds       0.0.0.0:5000->5000/tcp   inspiring_proskuriakova
 ```
 
-9. 移除WEB应用容器
+- **移除WEB应用容器**
 
 ```shell
 ## 我们可以使用 docker rm 命令来删除不需要的容器
@@ -507,7 +507,7 @@ Error response from daemon: You cannot remove a running container caf0cd11c184ba
 ## 6.docker镜像使用
 ==当运行容器时，使用的镜像如果在本地中不存在，docker 就会自动从 docker 镜像仓库中下载，默认是从 Docker Hub 公共镜像源下载。==
 
-1. 列出镜像列表
+- **列出镜像列表**
 
 ```shell
 tianxuanling@txl-ubuntu1904-init:~$ sudo docker images
@@ -524,7 +524,7 @@ training/webapp     latest              6fae60ef3446        4 years ago         
 ## SIZE：镜像大小
 ```
 
-2. 获取一个新的镜像
+- **获取一个新的镜像**
 
 ```shell
 ## 当我们在本地主机上使用一个不存在的镜像时 Docker 就会自动下载这个镜像。如果我们想预先下载这个镜像，我们可以使用 docker pull 命令来下载它。
@@ -539,7 +539,7 @@ Digest: sha256:b88f8848e9a1a4e4558ba7cfc4acc5879e1d0e7ac06401409062ad2627e6fb58
 Status: Downloaded newer image for ubuntu:latest
 ```
 
-3. 查找镜像
+- **查找镜像**
 
 ```shell
 ## 我们可以从 Docker Hub 网站来搜索镜像，Docker Hub 网址为： https://hub.docker.com/
@@ -577,7 +577,7 @@ trollin/httpd                                                                   
 ## OFFICIAL:是否docker官方发布
 ```
 
-4. 构建镜像
+- **构建镜像**
 ```shell
 ## 我们使用命令 docker build ， 从零开始来创建一个新的镜像。为此，我们需要创建一个 Dockerfile 文件，其中包含一组指令来告诉 Docker 如何构建我们的镜像。
 tianxuanling@txl-ubuntu1904-init:~$ cat Dockerfile
@@ -652,7 +652,7 @@ centos                6.7                 9f1de3c6ad53        6 months ago      
 training/webapp       latest              6fae60ef3446        4 years ago          349MB
 ```
 
-5. 设置镜像标签
+- **设置镜像标签**
 
 ```shell
 ## 我们可以使用 docker tag 命令，为镜像添加一个新的标签。
