@@ -1,4 +1,4 @@
-# kubernetes实践系列3--Kubernetes高可用HA
+# kubernetes实践系列3--Kubernetes1.16.4高可用HA
 
 在上一篇《kubernetes实践2--安装》里面，我们已经成功搭建了1个master节点和1个node节点的kubernetes集群环境，本章节将在此基础之上主要讨论和部署k8s的高可用HA环境
 
@@ -81,13 +81,6 @@ Tue, 11 Feb 2020 18:07:41 +0800
 ```shell
 sudo swapoff -a
 /etc/fstab文件里面注释掉swap部分
-
-sudo systemctl stop kubelet
-sudo systemctl stop docker
-sudo iptables --flush
-sudo iptables -tnat --flush
-sudo systemctl start kubelet
-sudo systemctl start docker
 ```
 
 1.4 ssh免密（所有k8s节点）
